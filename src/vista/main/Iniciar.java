@@ -4,12 +4,15 @@
  */
 package vista.main;
 
+import controlador.Controlador;
+
 /**
  *
  * @author Adonay
  */
 public class Iniciar {
     public static void main(String[] args) {
-        
+        Menu menu = new Menu();
+        new Controlador(menu);
     }
 }

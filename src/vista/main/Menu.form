@@ -95,7 +95,7 @@
                 <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="HOME"/>
                 </Property>
-                <Property name="sizeIcon" type="float" value="25.0"/>
+                <Property name="sizeIcon" type="float" value="22.0"/>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -136,6 +136,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLibDiarioActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="2" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
@@ -160,7 +163,7 @@
                 <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="TRENDING_UP"/>
                 </Property>
-                <Property name="sizeIcon" type="float" value="25.0"/>
+                <Property name="sizeIcon" type="float" value="22.0"/>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -193,7 +196,7 @@
                 <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="DESCRIPTION"/>
                 </Property>
-                <Property name="sizeIcon" type="float" value="25.0"/>
+                <Property name="sizeIcon" type="float" value="22.0"/>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -259,7 +262,7 @@
                   <Value id="BOOK"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
-                <Property name="sizeIcon" type="float" value="25.0"/>
+                <Property name="sizeIcon" type="float" value="22.0"/>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -293,7 +296,7 @@
                 <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="DONUT_LARGE"/>
                 </Property>
-                <Property name="sizeIcon" type="float" value="25.0"/>
+                <Property name="sizeIcon" type="float" value="22.0"/>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -327,7 +330,7 @@
                 <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="LINEAR_SCALE"/>
                 </Property>
-                <Property name="sizeIcon" type="float" value="25.0"/>
+                <Property name="sizeIcon" type="float" value="22.0"/>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -361,7 +364,7 @@
                 <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
                   <Value id="CLEAR_ALL"/>
                 </Property>
-                <Property name="sizeIcon" type="float" value="25.0"/>
+                <Property name="sizeIcon" type="float" value="22.0"/>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
               <Events>

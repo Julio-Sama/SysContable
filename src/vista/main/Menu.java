@@ -3,8 +3,6 @@ package vista.main;
 import controlador.Controlador;
 import java.awt.Color;
 import javax.swing.JFrame;
-import utilidades.CambiaPanel;
-import vista.modulos.VistaHabitacion;
 
 
 public class Menu extends javax.swing.JFrame {
@@ -15,11 +13,13 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+        
+        /* Nombre de botones para identificarlos en el controlador */
+        this.btnLibDiario.setActionCommand("libroDiario");
     }
-
+    
     public void setControlador(Controlador control){
-
+        this.btnLibDiario.addActionListener(control);
     }
     
     public void iniciar(){
@@ -88,7 +88,7 @@ public class Menu extends javax.swing.JFrame {
         btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnInicio.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.HOME);
-        btnInicio.setSizeIcon(25.0F);
+        btnInicio.setSizeIcon(22.0F);
         btnInicio.setVerifyInputWhenFocusTarget(false);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +132,7 @@ public class Menu extends javax.swing.JFrame {
         btnBalanceComprobacion.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnBalanceComprobacion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnBalanceComprobacion.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.TRENDING_UP);
-        btnBalanceComprobacion.setSizeIcon(25.0F);
+        btnBalanceComprobacion.setSizeIcon(22.0F);
         btnBalanceComprobacion.setVerifyInputWhenFocusTarget(false);
         btnBalanceComprobacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +153,7 @@ public class Menu extends javax.swing.JFrame {
         btnCatalogo.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnCatalogo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCatalogo.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.DESCRIPTION);
-        btnCatalogo.setSizeIcon(25.0F);
+        btnCatalogo.setSizeIcon(22.0F);
         btnCatalogo.setVerifyInputWhenFocusTarget(false);
         btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +198,7 @@ public class Menu extends javax.swing.JFrame {
         btbHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btbHabitacion.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.BOOK);
         btbHabitacion.setOpaque(true);
-        btbHabitacion.setSizeIcon(25.0F);
+        btbHabitacion.setSizeIcon(22.0F);
         btbHabitacion.setVerifyInputWhenFocusTarget(false);
         btbHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +220,7 @@ public class Menu extends javax.swing.JFrame {
         btnEstadoResultados.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnEstadoResultados.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEstadoResultados.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.DONUT_LARGE);
-        btnEstadoResultados.setSizeIcon(25.0F);
+        btnEstadoResultados.setSizeIcon(22.0F);
         btnEstadoResultados.setVerifyInputWhenFocusTarget(false);
         btnEstadoResultados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +242,7 @@ public class Menu extends javax.swing.JFrame {
         btnBalanceGeneral.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnBalanceGeneral.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnBalanceGeneral.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.LINEAR_SCALE);
-        btnBalanceGeneral.setSizeIcon(25.0F);
+        btnBalanceGeneral.setSizeIcon(22.0F);
         btnBalanceGeneral.setVerifyInputWhenFocusTarget(false);
         btnBalanceGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,7 +264,7 @@ public class Menu extends javax.swing.JFrame {
         btnCierre.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnCierre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCierre.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.CLEAR_ALL);
-        btnCierre.setSizeIcon(25.0F);
+        btnCierre.setSizeIcon(22.0F);
         btnCierre.setVerifyInputWhenFocusTarget(false);
         btnCierre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,12 +342,6 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnLibDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibDiarioActionPerformed
-        resetMenu();
-        this.btnLibDiario.setBackground(new Color(241,123,55));
-        new CambiaPanel(this.body, new VistaHabitacion());
-    }//GEN-LAST:event_btnLibDiarioActionPerformed
-
     public void resetMenu(){
         this.btnInicio.setBackground(new Color(42,53,66));
         this.btnBalanceComprobacion.setBackground(new Color(42,53,66));
@@ -410,42 +404,47 @@ public class Menu extends javax.swing.JFrame {
         this.btnCierre.setBackground(new Color(241,123,55));
     }//GEN-LAST:event_btnCierreActionPerformed
 
+    private void btnLibDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibDiarioActionPerformed
+        resetMenu();
+        this.btnLibDiario.setBackground(new Color(241,123,55));
+    }//GEN-LAST:event_btnLibDiarioActionPerformed
+
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Menu().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel aside;
@@ -457,7 +456,7 @@ public class Menu extends javax.swing.JFrame {
     public newscomponents.RSButtonIcon_new btnCierre;
     public newscomponents.RSButtonIcon_new btnEstadoResultados;
     public newscomponents.RSButtonIcon_new btnInicio;
-    private newscomponents.RSButtonIcon_new btnLibDiario;
+    public newscomponents.RSButtonIcon_new btnLibDiario;
     private newscomponents.RSButtonIcon_new btnLibMayor;
     private RSMaterialComponent.RSButtonIconOne btnMenu;
     public RSMaterialComponent.RSButtonIconOne btnSalir;
