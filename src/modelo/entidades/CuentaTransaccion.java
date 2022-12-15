@@ -10,5 +10,7 @@ package modelo.entidades;
  * @author Adonay
  */
 public class CuentaTransaccion {
-    
+    private Transaccion transaccion;
+    private Cuenta cuenta;
+    private double monto_cuenta;
 }

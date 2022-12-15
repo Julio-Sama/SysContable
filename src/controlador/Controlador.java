@@ -6,121 +6,120 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.CuentaDao;
 import modelo.entidades.Cuenta;
 import utilidades.CambiaPanel;
-import utilidades.ImgTabla;
 import vista.main.Menu;
-import vista.modulos.ModalDiarioAgregarCuenta;
-import vista.modulos.VistaLibroDiario;
+import vista.modulos.DialogCuentasLibroDiario;
+import vista.modulos.DialogReporteLibroDiario;
+import vista.modulos.PnlInicio;
+import vista.modulos.PnlLibroDiario;
+import vista.modulos.PnlLibros;
 
 /**
  *
  * @author Adonay
  */
-public class Controlador implements ActionListener, MouseListener{
+public class Controlador implements ActionListener{
+    ////////////////////////////////////////////////////
     private Menu menu;
     
-    /* Libro diario */
-    private VistaLibroDiario moduloLibroDiario;
-    private ModalDiarioAgregarCuenta modalDiarioAgregarCuenta;
-    private CuentaDao daoCuenta;
+    /* Declaración de objetos Módulos */
+    private PnlInicio panelInicio;
+    private PnlLibros panelLibros;
+    private PnlLibroDiario panelLibroDiario;
+    /* Fin declaración de objetos Módulos */
+    
+    /* Declaración de objetos Modals */
+    private DialogReporteLibroDiario dialogReporteLibroDiario;
+    private DialogCuentasLibroDiario dialogCuentasLibroDiario;
+    /* Fin declaración de objetos Modals */
+    
+    /* Declaración de objetos DAOs */
+    private CuentaDao daoCuenta = new CuentaDao();
+    /* Fin declaración de objetos DAOs */
+    ////////////////////////////////////////////////////
+    
     
     public Controlador(Menu menu) {
         this.menu = menu;
         this.menu.setControlador(this);
+        new CambiaPanel(this.menu.pnlCambia, new PnlInicio());
         this.menu.iniciar();
     }
     
-    public void mostrarCuentasDiario() throws SQLException{
-        this.daoCuenta = new CuentaDao();
-        DefaultTableCellRenderer diseñoTabla = (DefaultTableCellRenderer) this.modalDiarioAgregarCuenta.tablaCuentas.getCellRenderer(0, 0);
-        DefaultTableModel modelo = (DefaultTableModel) this.modalDiarioAgregarCuenta.tablaCuentas.getModel();
-        modelo.setRowCount(0);
-        
-        this.modalDiarioAgregarCuenta.tablaCuentas.setDefaultRenderer(Object.class, new ImgTabla());
-        
-        this.modalDiarioAgregarCuenta.tablaCuentas.getColumnModel().getColumn(0).setCellRenderer(diseñoTabla); /* Mantener diseño de la tabla por columnas */
-        this.modalDiarioAgregarCuenta.tablaCuentas.getColumnModel().getColumn(1).setCellRenderer(diseñoTabla);
-        
-        for(Cuenta x : this.daoCuenta.selectAll()){
-            ImageIcon img_agregar = new ImageIcon(getClass().getResource("/img/add.png"));
-            JLabel lbImg_agregar = new JLabel(new ImageIcon(img_agregar.getImage()));
-            
-            modelo.addRow(new Object[]{x.getCod_cuenta(), x.getNom_cuenta(), lbImg_agregar});
+    /* Método para cambiar de módulo */
+    public void cambiarModulo(String boton){
+        /* Condiciones para cambiar de modulo */
+        if(boton.equals("moduloInicio")){
+            this.panelInicio = new PnlInicio(); /* Se asigna espacio en memoria */
+            new CambiaPanel(this.menu.pnlCambia, this.panelInicio); /* Llamar a la clase 'CambiaPanel' para mostrar el módulo o vista*/
+        }else if(boton.equals("moduloLibros")){
+            this.panelLibros = new PnlLibros();
+            this.panelLibros.setControlador(this); /* Setteamos el controlador para poder manejar los eventos de botones */
+            new CambiaPanel(this.menu.pnlCambia, this.panelLibros);
+        }else if(boton.equals("moduloLibroDiario")){
+            this.panelLibroDiario = new PnlLibroDiario();
+            this.panelLibroDiario.setControlador(this);
+            new CambiaPanel(this.menu.pnlCambia, this.panelLibroDiario);
         }
         
-        this.modalDiarioAgregarCuenta.tablaCuentas.setModel(modelo);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent modulo) {
-        /* Cambiar de módulo */        
-        if(modulo.getActionCommand().equals("libroDiario")){
-            this.moduloLibroDiario = new VistaLibroDiario();
-            this.moduloLibroDiario.setControlador(this);
-            new CambiaPanel(this.menu.body, moduloLibroDiario);
-        }
-        
-        /* Abrir modal */
-        if(modulo.getActionCommand().equals("libroDiario_buscarCuenta")){
-            this.modalDiarioAgregarCuenta = new ModalDiarioAgregarCuenta(new JFrame(), true);
-            this.modalDiarioAgregarCuenta.setControlador(this);
-            try {
-                mostrarCuentasDiario();
-            } catch (SQLException ex) {
-                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.modalDiarioAgregarCuenta.iniciar();
-        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent componente) {
-        if(componente.getSource().equals(this.modalDiarioAgregarCuenta.tablaCuentas)){
-            int columna = this.modalDiarioAgregarCuenta.tablaCuentas.getSelectedColumn();
-        
-            if(columna == 2){
-                int fila = this.modalDiarioAgregarCuenta.tablaCuentas.getSelectedRow();
-                String cod_cuenta = this.modalDiarioAgregarCuenta.tablaCuentas.getValueAt(fila, 0).toString();
-                String nom_cuenta = this.modalDiarioAgregarCuenta.tablaCuentas.getValueAt(fila, 1).toString();
-                
-                this.moduloLibroDiario.labelCodCuenta.setText(cod_cuenta);
-                this.moduloLibroDiario.labelNomCuenta.setText(nom_cuenta);
-                this.modalDiarioAgregarCuenta.dispose();
-                this.modalDiarioAgregarCuenta = null;
-            }
+        /* Condiciones para mostrar modals (JDialog) */
+        if(boton.equals("dialogReporteLibroDiario")){
+            this.dialogReporteLibroDiario = new DialogReporteLibroDiario(new JFrame(), true);
+            //this.dialogReporteLibroDiario.setControlador(this);
+            this.dialogReporteLibroDiario.setVisible(true);
+        }else if(boton.equals("dialogBuscarCuentaLibroDiario")){
+            this.dialogCuentasLibroDiario = new DialogCuentasLibroDiario(new JFrame(), true);
+            mostrarCuentasLibroDiario(); /* Antes de mostrar dialogo se cargan las cuentas en la tabla */
+            this.dialogCuentasLibroDiario.setVisible(true);
         }
     }
     
-    @Override
-    public void mouseClicked(MouseEvent e) {
+    ////////////////////////////////////////////////////
+    /* Métodos para mostrar datos en tablas */
+    public void mostrarCuentasLibroDiario(){
+        DefaultTableModel modelo = (DefaultTableModel)this.dialogCuentasLibroDiario.tablaCuentasLibroDiario.getModel();
+        modelo.setRowCount(0);
         
+        try {
+            for(Cuenta x : this.daoCuenta.selectAll()){
+                modelo.addRow(new Object[]{x.getCod_cuenta(), x.getNom_cuenta(), ""});
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        this.dialogCuentasLibroDiario.tablaCuentasLibroDiario.setModel(modelo);
     }
-
+    /* Fin métodos para mostrar datos en tablas */
+    ////////////////////////////////////////////////////
+    
+    
+    /* Método que verifica cual boton se ha pulsado en la vista actual */
+    int i = 0; // <- Omitir
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void actionPerformed(ActionEvent action) {
         
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
+        if(action.getActionCommand().equals("btnInicio")){
+            cambiarModulo("moduloInicio"); /* Llamar al método 'cambiarModulo' para que haga la acción de cambio de módulo o vista */
+        }else if(action.getActionCommand().equals("btnLibros") || action.getActionCommand().equals("btnVolverLibroDiario")){
+            cambiarModulo("moduloLibros");
+        }else if(action.getActionCommand().equals("btnLibroDiario")){
+            cambiarModulo("moduloLibroDiario");
+        }else if(action.getActionCommand().equals("btnReportePartidas")){
+            cambiarModulo("dialogReporteLibroDiario");
+        }else if(action.getActionCommand().equals("btnBuscarCuentaPartida")){
+            cambiarModulo("dialogBuscarCuentaLibroDiario");
+        }
         
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        
+        System.out.println("Cambia de módulo " + i++); //<- Omitir
     }
 
 }

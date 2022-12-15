@@ -1,25 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vista.main;
 
 import controlador.Controlador;
-import java.awt.Color;
-import javax.swing.JFrame;
+import rojeru_san.complementos.RSEffectFade;
+import rojeru_san.complementos.RSMoveWindow;
+import rojeru_san.complementos.RSUtilities;
 
-
+/**
+ *
+ * @author Adonay
+ */
 public class Menu extends javax.swing.JFrame {
 
-    boolean menuActived = true;
-    boolean despleg = true;
-    
+    /**
+     * Creates new form Index
+     */
     public Menu() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setTitle("Sistema de contabilidad | Universidad de El Salvador");
+        RSEffectFade.setFadeWindowIn(this, 20, 0.1f);
+        RSUtilities.setCenterWindow(this);
+        RSUtilities.setOpaqueWindow(this, false);
+        new RSMoveWindow().setMoveWindow(this);
         
-        /* Nombre de botones para identificarlos en el controlador */
-        this.btnLibDiario.setActionCommand("libroDiario");
+        /* Setteamos el identificador de los botones */
+        this.btnInicio.setActionCommand("btnInicio");
+        this.btnLibros.setActionCommand("btnLibros");
     }
     
     public void setControlador(Controlador control){
-        this.btnLibDiario.addActionListener(control);
+        this.btnInicio.addActionListener(control);
+        this.btnLibros.addActionListener(control);
     }
     
     public void iniciar(){
@@ -34,382 +49,259 @@ public class Menu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        aside = new javax.swing.JPanel();
-        modulos = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        btnInicio = new newscomponents.RSButtonIcon_new();
-        btnLibDiario = new newscomponents.RSButtonIcon_new();
-        btnBalanceComprobacion = new newscomponents.RSButtonIcon_new();
-        btnCatalogo = new newscomponents.RSButtonIcon_new();
-        btnLibMayor = new newscomponents.RSButtonIcon_new();
-        btbHabitacion = new newscomponents.RSButtonIcon_new();
-        btnEstadoResultados = new newscomponents.RSButtonIcon_new();
-        btnBalanceGeneral = new newscomponents.RSButtonIcon_new();
-        btnCierre = new newscomponents.RSButtonIcon_new();
-        header = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        btnMenu = new RSMaterialComponent.RSButtonIconOne();
-        btnSalir = new RSMaterialComponent.RSButtonIconOne();
-        body = new javax.swing.JPanel();
+        rSPanelMaterial1 = new RSMaterialComponent.RSPanelMaterial();
+        jLabel4 = new javax.swing.JLabel();
+        rSPanelBorder1 = new RSMaterialComponent.RSPanelBorder();
+        pnlCambia = new newscomponents.RSPanelEffect();
+        btnInicio = new RSMaterialComponent.RSButtonMaterialIconOne();
+        btnLibros = new RSMaterialComponent.RSButtonMaterialIconOne();
+        btnCopia = new RSMaterialComponent.RSButtonMaterialIconOne();
+        btnBaul = new RSMaterialComponent.RSButtonMaterialIconOne();
+        btnAbout = new RSMaterialComponent.RSButtonMaterialIconOne();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        aside.setBackground(new java.awt.Color(42, 53, 66));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 2);
-        flowLayout1.setAlignOnBaseline(true);
-        aside.setLayout(flowLayout1);
+        rSPanelMaterial1.setBackground(new java.awt.Color(0, 102, 255));
+        rSPanelMaterial1.setIntensity(10);
+        rSPanelMaterial1.setRound(10);
 
-        modulos.setOpaque(false);
-        modulos.setLayout(new java.awt.GridBagLayout());
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("SysContable");
 
-        jLabel13.setBackground(new java.awt.Color(37, 46, 57));
-        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("MENÚ");
-        jLabel13.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jLabel13.setOpaque(true);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 202;
-        gridBagConstraints.ipady = 23;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 6, 0);
-        modulos.add(jLabel13, gridBagConstraints);
+        rSPanelBorder1.setBackground(new java.awt.Color(255, 255, 255));
+        rSPanelBorder1.setBgBorder(new java.awt.Color(37, 45, 223));
+        rSPanelBorder1.setBorderBottom(false);
+        rSPanelBorder1.setBorderLeft(false);
+        rSPanelBorder1.setBorderRight(false);
+        rSPanelBorder1.setBorderTop(false);
+        rSPanelBorder1.setRound(10);
 
-        btnInicio.setBackground(new java.awt.Color(241, 123, 55));
-        btnInicio.setText("Inicio");
-        btnInicio.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnInicio.setFocusPainted(false);
-        btnInicio.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnInicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        pnlCambia.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout rSPanelBorder1Layout = new javax.swing.GroupLayout(rSPanelBorder1);
+        rSPanelBorder1.setLayout(rSPanelBorder1Layout);
+        rSPanelBorder1Layout.setHorizontalGroup(
+            rSPanelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rSPanelBorder1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlCambia, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        rSPanelBorder1Layout.setVerticalGroup(
+            rSPanelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rSPanelBorder1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlCambia, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btnInicio.setBackground(new java.awt.Color(0, 102, 255));
+        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
+        btnInicio.setText("  Inicio");
+        btnInicio.setBackgroundHover(new java.awt.Color(248, 248, 248));
+        btnInicio.setFont(new java.awt.Font("Roboto Bold", 1, 16)); // NOI18N
+        btnInicio.setForegroundHover(new java.awt.Color(0, 0, 0));
+        btnInicio.setForegroundIconHover(new java.awt.Color(0, 0, 0));
         btnInicio.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.HOME);
-        btnInicio.setSizeIcon(22.0F);
-        btnInicio.setVerifyInputWhenFocusTarget(false);
+        btnInicio.setPaddingLeft(10);
+        btnInicio.setRippleColor(new java.awt.Color(26, 117, 255));
+        btnInicio.setSelected(true);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnInicio, gridBagConstraints);
 
-        btnLibDiario.setBackground(new java.awt.Color(51, 65, 80));
-        btnLibDiario.setText("Libro diario");
-        btnLibDiario.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnLibDiario.setFocusPainted(false);
-        btnLibDiario.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnLibDiario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnLibDiario.setIconTextGap(20);
-        btnLibDiario.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.CHEVRON_RIGHT);
-        btnLibDiario.setOpaque(true);
-        btnLibDiario.setRequestFocusEnabled(false);
-        btnLibDiario.setSizeIcon(18.0F);
-        btnLibDiario.setVerifyInputWhenFocusTarget(false);
-        btnLibDiario.addActionListener(new java.awt.event.ActionListener() {
+        btnLibros.setBackground(new java.awt.Color(0, 102, 255));
+        btnLibros.setForeground(new java.awt.Color(0, 0, 0));
+        btnLibros.setText("  Libros");
+        btnLibros.setToolTipText("");
+        btnLibros.setBackgroundHover(new java.awt.Color(248, 248, 248));
+        btnLibros.setFont(new java.awt.Font("Roboto Bold", 1, 16)); // NOI18N
+        btnLibros.setForegroundHover(new java.awt.Color(0, 0, 0));
+        btnLibros.setForegroundIconHover(new java.awt.Color(0, 0, 0));
+        btnLibros.setIconTextGap(5);
+        btnLibros.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.BOOK);
+        btnLibros.setName("scan"); // NOI18N
+        btnLibros.setPaddingLeft(10);
+        btnLibros.setRippleColor(new java.awt.Color(26, 117, 255));
+        btnLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLibDiarioActionPerformed(evt);
+                btnLibrosActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnLibDiario, gridBagConstraints);
 
-        btnBalanceComprobacion.setBackground(new java.awt.Color(42, 53, 66));
-        btnBalanceComprobacion.setText("Balance de comprobación");
-        btnBalanceComprobacion.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnBalanceComprobacion.setFocusPainted(false);
-        btnBalanceComprobacion.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnBalanceComprobacion.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBalanceComprobacion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnBalanceComprobacion.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.TRENDING_UP);
-        btnBalanceComprobacion.setSizeIcon(22.0F);
-        btnBalanceComprobacion.setVerifyInputWhenFocusTarget(false);
-        btnBalanceComprobacion.addActionListener(new java.awt.event.ActionListener() {
+        btnCopia.setBackground(new java.awt.Color(0, 102, 255));
+        btnCopia.setForeground(new java.awt.Color(0, 0, 0));
+        btnCopia.setText("  Estado de resultados");
+        btnCopia.setBackgroundHover(new java.awt.Color(248, 248, 248));
+        btnCopia.setFont(new java.awt.Font("Roboto Bold", 1, 16)); // NOI18N
+        btnCopia.setForegroundHover(new java.awt.Color(0, 0, 0));
+        btnCopia.setForegroundIconHover(new java.awt.Color(0, 0, 0));
+        btnCopia.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.MONETIZATION_ON);
+        btnCopia.setName("copia"); // NOI18N
+        btnCopia.setPaddingLeft(10);
+        btnCopia.setRippleColor(new java.awt.Color(26, 117, 255));
+        btnCopia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBalanceComprobacionActionPerformed(evt);
+                btnCopiaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnBalanceComprobacion, gridBagConstraints);
 
-        btnCatalogo.setBackground(new java.awt.Color(42, 53, 66));
-        btnCatalogo.setText("Catálogo");
-        btnCatalogo.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnCatalogo.setFocusPainted(false);
-        btnCatalogo.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnCatalogo.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnCatalogo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCatalogo.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.DESCRIPTION);
-        btnCatalogo.setSizeIcon(22.0F);
-        btnCatalogo.setVerifyInputWhenFocusTarget(false);
-        btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
+        btnBaul.setBackground(new java.awt.Color(0, 102, 255));
+        btnBaul.setForeground(new java.awt.Color(0, 0, 0));
+        btnBaul.setText("  Balance general");
+        btnBaul.setBackgroundHover(new java.awt.Color(248, 248, 248));
+        btnBaul.setFont(new java.awt.Font("Roboto Bold", 1, 16)); // NOI18N
+        btnBaul.setForegroundHover(new java.awt.Color(0, 0, 0));
+        btnBaul.setForegroundIconHover(new java.awt.Color(0, 0, 0));
+        btnBaul.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.ACCOUNT_BALANCE);
+        btnBaul.setPaddingLeft(10);
+        btnBaul.setRippleColor(new java.awt.Color(26, 117, 255));
+        btnBaul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCatalogoActionPerformed(evt);
+                btnBaulActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnCatalogo, gridBagConstraints);
 
-        btnLibMayor.setBackground(new java.awt.Color(51, 65, 80));
-        btnLibMayor.setText("Libro mayor");
-        btnLibMayor.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnLibMayor.setFocusPainted(false);
-        btnLibMayor.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnLibMayor.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnLibMayor.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnLibMayor.setIconTextGap(20);
-        btnLibMayor.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.CHEVRON_RIGHT);
-        btnLibMayor.setOpaque(true);
-        btnLibMayor.setSizeIcon(18.0F);
-        btnLibMayor.setVerifyInputWhenFocusTarget(false);
-        btnLibMayor.addActionListener(new java.awt.event.ActionListener() {
+        btnAbout.setBackground(new java.awt.Color(0, 102, 255));
+        btnAbout.setForeground(new java.awt.Color(0, 0, 0));
+        btnAbout.setText("  Cierre del período");
+        btnAbout.setBackgroundHover(new java.awt.Color(248, 248, 248));
+        btnAbout.setFont(new java.awt.Font("Roboto Bold", 1, 16)); // NOI18N
+        btnAbout.setForegroundHover(new java.awt.Color(0, 0, 0));
+        btnAbout.setForegroundIconHover(new java.awt.Color(0, 0, 0));
+        btnAbout.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.OFFLINE_PIN);
+        btnAbout.setPaddingLeft(10);
+        btnAbout.setRippleColor(new java.awt.Color(26, 117, 255));
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLibMayorActionPerformed(evt);
+                btnAboutActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnLibMayor, gridBagConstraints);
 
-        btbHabitacion.setBackground(new java.awt.Color(42, 53, 66));
-        btbHabitacion.setText("Libros");
-        btbHabitacion.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btbHabitacion.setFocusPainted(false);
-        btbHabitacion.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btbHabitacion.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btbHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btbHabitacion.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.BOOK);
-        btbHabitacion.setOpaque(true);
-        btbHabitacion.setSizeIcon(22.0F);
-        btbHabitacion.setVerifyInputWhenFocusTarget(false);
-        btbHabitacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btbHabitacionActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btbHabitacion, gridBagConstraints);
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("© Universidad de El Salvador 2022");
 
-        btnEstadoResultados.setBackground(new java.awt.Color(42, 53, 66));
-        btnEstadoResultados.setText("Estado de resultados");
-        btnEstadoResultados.setActionCommand("Kardex");
-        btnEstadoResultados.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnEstadoResultados.setFocusPainted(false);
-        btnEstadoResultados.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnEstadoResultados.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnEstadoResultados.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnEstadoResultados.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.DONUT_LARGE);
-        btnEstadoResultados.setSizeIcon(22.0F);
-        btnEstadoResultados.setVerifyInputWhenFocusTarget(false);
-        btnEstadoResultados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstadoResultadosActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnEstadoResultados, gridBagConstraints);
+        javax.swing.GroupLayout rSPanelMaterial1Layout = new javax.swing.GroupLayout(rSPanelMaterial1);
+        rSPanelMaterial1.setLayout(rSPanelMaterial1Layout);
+        rSPanelMaterial1Layout.setHorizontalGroup(
+            rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
+                .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCopia, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(rSPanelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
+        );
+        rSPanelMaterial1Layout.setVerticalGroup(
+            rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rSPanelMaterial1Layout.createSequentialGroup()
+                .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel4)
+                        .addGap(55, 55, 55)
+                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCopia, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBaul, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(14, 14, 14))
+                    .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(rSPanelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
 
-        btnBalanceGeneral.setBackground(new java.awt.Color(42, 53, 66));
-        btnBalanceGeneral.setText("Balance general");
-        btnBalanceGeneral.setActionCommand("Kardex");
-        btnBalanceGeneral.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnBalanceGeneral.setFocusPainted(false);
-        btnBalanceGeneral.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnBalanceGeneral.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnBalanceGeneral.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnBalanceGeneral.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.LINEAR_SCALE);
-        btnBalanceGeneral.setSizeIcon(22.0F);
-        btnBalanceGeneral.setVerifyInputWhenFocusTarget(false);
-        btnBalanceGeneral.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBalanceGeneralActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnBalanceGeneral, gridBagConstraints);
-
-        btnCierre.setBackground(new java.awt.Color(42, 53, 66));
-        btnCierre.setText("Cierre contable");
-        btnCierre.setActionCommand("Kardex");
-        btnCierre.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnCierre.setFocusPainted(false);
-        btnCierre.setFont(new java.awt.Font("Bahnschrift", 0, 16)); // NOI18N
-        btnCierre.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnCierre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCierre.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.CLEAR_ALL);
-        btnCierre.setSizeIcon(22.0F);
-        btnCierre.setVerifyInputWhenFocusTarget(false);
-        btnCierre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCierreActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        modulos.add(btnCierre, gridBagConstraints);
-
-        aside.add(modulos);
-
-        getContentPane().add(aside, java.awt.BorderLayout.LINE_START);
-
-        header.setBackground(new java.awt.Color(61, 137, 248));
-        header.setLayout(new java.awt.GridBagLayout());
-
-        jLabel10.setBackground(new java.awt.Color(61, 137, 248));
-        jLabel10.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Sistema de Contabilidad | Panel de Control");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.weightx = 10.0;
-        header.add(jLabel10, gridBagConstraints);
-
-        btnMenu.setBackground(new java.awt.Color(61, 137, 248));
-        btnMenu.setBackgroundHover(new java.awt.Color(61, 137, 248));
-        btnMenu.setFocusPainted(false);
-        btnMenu.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.MENU);
-        btnMenu.setSizeIcon(25.0F);
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        header.add(btnMenu, gridBagConstraints);
-
-        btnSalir.setBackground(new java.awt.Color(255, 67, 67));
-        btnSalir.setBackgroundHover(new java.awt.Color(255, 67, 67));
-        btnSalir.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.EXIT_TO_APP);
-        btnSalir.setSizeIcon(30.0F);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        header.add(btnSalir, gridBagConstraints);
-
-        getContentPane().add(header, java.awt.BorderLayout.PAGE_START);
-
-        body.setBackground(new java.awt.Color(236, 240, 245));
-        body.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        body.setForeground(new java.awt.Color(204, 204, 204));
-        body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.LINE_AXIS));
-        getContentPane().add(body, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rSPanelMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rSPanelMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        if(menuActived == true){
-            menuActived = false;
-            this.aside.setVisible(false);
-        }else{
-            menuActived = true;
-            this.aside.setVisible(true);
+    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+        if (!btnAbout.isSelected()) {
+            btnInicio.setSelected(false);
+            btnLibros.setSelected(false);
+            btnCopia.setSelected(false);
+            btnBaul.setSelected(false);
+            btnAbout.setSelected(true);
         }
-    }//GEN-LAST:event_btnMenuActionPerformed
+    }//GEN-LAST:event_btnAboutActionPerformed
 
-    public void resetMenu(){
-        this.btnInicio.setBackground(new Color(42,53,66));
-        this.btnBalanceComprobacion.setBackground(new Color(42,53,66));
-        
-        /* Desplegables */
-        this.btnLibMayor.setBackground(new Color(51,65,80));
-        this.btnLibDiario.setBackground(new Color(51,65,80));
-        
-        this.btnCatalogo.setBackground(new Color(42,53,66));
-        this.btnEstadoResultados.setBackground(new Color(42,53,66));
-        this.btnBalanceGeneral.setBackground(new Color(42,53,66));
-        this.btnCierre.setBackground(new Color(42,53,66));
-    }
-    
+    private void btnBaulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaulActionPerformed
+        if (!btnBaul.isSelected()) {
+            btnInicio.setSelected(false);
+            btnLibros.setSelected(false);
+            btnCopia.setSelected(false);
+            btnBaul.setSelected(true);
+            btnAbout.setSelected(false);
+        }
+    }//GEN-LAST:event_btnBaulActionPerformed
+
+    private void btnCopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCopiaActionPerformed
+        if (!btnCopia.isSelected()) {
+            btnInicio.setSelected(false);
+            btnLibros.setSelected(false);
+            btnCopia.setSelected(true);
+            btnBaul.setSelected(false);
+            btnAbout.setSelected(false);
+        }
+    }//GEN-LAST:event_btnCopiaActionPerformed
+
+    private void btnLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibrosActionPerformed
+        if (!btnLibros.isSelected()) {
+            btnInicio.setSelected(false);
+            btnLibros.setSelected(true);
+            btnCopia.setSelected(false);
+            btnBaul.setSelected(false);
+            btnAbout.setSelected(false);
+        }
+    }//GEN-LAST:event_btnLibrosActionPerformed
+
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        resetMenu();
-        this.btnInicio.setBackground(new Color(241,123,55));
+        if (!btnInicio.isSelected()) {
+            btnInicio.setSelected(true);
+            btnLibros.setSelected(false);
+            btnCopia.setSelected(false);
+            btnBaul.setSelected(false);
+            btnAbout.setSelected(false);
+        }
     }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void btnBalanceComprobacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanceComprobacionActionPerformed
-        resetMenu();
-        this.btnBalanceComprobacion.setBackground(new Color(241,123,55));
-    }//GEN-LAST:event_btnBalanceComprobacionActionPerformed
-
-    private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
-        resetMenu();
-        this.btnCatalogo.setBackground(new Color(241,123,55));
-    }//GEN-LAST:event_btnCatalogoActionPerformed
-
-    private void btnLibMayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibMayorActionPerformed
-        resetMenu();
-        this.btnLibMayor.setBackground(new Color(241,123,55));
-    }//GEN-LAST:event_btnLibMayorActionPerformed
-
-    private void btbHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbHabitacionActionPerformed
-        if(despleg != true){
-            this.btnLibMayor.setVisible(true);
-            this.btnLibDiario.setVisible(true);
-            despleg = true;
-        }else{
-            this.btnLibMayor.setVisible(false);
-            this.btnLibDiario.setVisible(false);
-            despleg = false;
-        }
-        
-    }//GEN-LAST:event_btbHabitacionActionPerformed
-
-    private void btnEstadoResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadoResultadosActionPerformed
-        resetMenu();
-        this.btnEstadoResultados.setBackground(new Color(241,123,55));
-    }//GEN-LAST:event_btnEstadoResultadosActionPerformed
-
-    private void btnBalanceGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanceGeneralActionPerformed
-        resetMenu();
-        this.btnBalanceGeneral.setBackground(new Color(241,123,55));
-    }//GEN-LAST:event_btnBalanceGeneralActionPerformed
-
-    private void btnCierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCierreActionPerformed
-        resetMenu();
-        this.btnCierre.setBackground(new Color(241,123,55));
-    }//GEN-LAST:event_btnCierreActionPerformed
-
-    private void btnLibDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibDiarioActionPerformed
-        resetMenu();
-        this.btnLibDiario.setBackground(new Color(241,123,55));
-    }//GEN-LAST:event_btnLibDiarioActionPerformed
-
-    
     /**
      * @param args the command line arguments
      */
@@ -422,7 +314,7 @@ public class Menu extends javax.swing.JFrame {
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 //                    break;
 //                }
 //            }
@@ -437,6 +329,20 @@ public class Menu extends javax.swing.JFrame {
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
@@ -447,22 +353,15 @@ public class Menu extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JPanel aside;
-    public javax.swing.JPanel body;
-    public newscomponents.RSButtonIcon_new btbHabitacion;
-    public newscomponents.RSButtonIcon_new btnBalanceComprobacion;
-    public newscomponents.RSButtonIcon_new btnBalanceGeneral;
-    public newscomponents.RSButtonIcon_new btnCatalogo;
-    public newscomponents.RSButtonIcon_new btnCierre;
-    public newscomponents.RSButtonIcon_new btnEstadoResultados;
-    public newscomponents.RSButtonIcon_new btnInicio;
-    public newscomponents.RSButtonIcon_new btnLibDiario;
-    private newscomponents.RSButtonIcon_new btnLibMayor;
-    private RSMaterialComponent.RSButtonIconOne btnMenu;
-    public RSMaterialComponent.RSButtonIconOne btnSalir;
-    public javax.swing.JPanel header;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel13;
-    public javax.swing.JPanel modulos;
+    private RSMaterialComponent.RSButtonMaterialIconOne btnAbout;
+    public static RSMaterialComponent.RSButtonMaterialIconOne btnBaul;
+    private RSMaterialComponent.RSButtonMaterialIconOne btnCopia;
+    public RSMaterialComponent.RSButtonMaterialIconOne btnInicio;
+    public RSMaterialComponent.RSButtonMaterialIconOne btnLibros;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    public newscomponents.RSPanelEffect pnlCambia;
+    private RSMaterialComponent.RSPanelBorder rSPanelBorder1;
+    private RSMaterialComponent.RSPanelMaterial rSPanelMaterial1;
     // End of variables declaration//GEN-END:variables
 }
