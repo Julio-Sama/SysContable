@@ -4,6 +4,8 @@
  */
 package vista.modulos;
 
+import controlador.Controlador;
+
 /**
  *
  * @author Adonay
@@ -20,6 +22,10 @@ public class DialogCuentasLibroDiario extends javax.swing.JDialog {
         this.setResizable(false);
     }
 
+    public void setControlador(Controlador control){
+        this.tablaCuentasLibroDiario.addMouseListener(control);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,9 +73,11 @@ public class DialogCuentasLibroDiario extends javax.swing.JDialog {
         tablaCuentasLibroDiario.setColorSecundaryText(new java.awt.Color(51, 51, 51));
         tablaCuentasLibroDiario.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         tablaCuentasLibroDiario.setFontHead(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tablaCuentasLibroDiario.setFontRowSelect(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tablaCuentasLibroDiario.setForegroundHead(new java.awt.Color(51, 51, 51));
+        tablaCuentasLibroDiario.setGridColor(new java.awt.Color(255, 255, 255));
         tablaCuentasLibroDiario.setModelSelection(null);
-        tablaCuentasLibroDiario.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        tablaCuentasLibroDiario.setSelectionBackground(new java.awt.Color(153, 204, 255));
         ScrollPanelReporteLibroDiario.setViewportView(tablaCuentasLibroDiario);
         if (tablaCuentasLibroDiario.getColumnModel().getColumnCount() > 0) {
             tablaCuentasLibroDiario.getColumnModel().getColumn(0).setResizable(false);
@@ -79,7 +87,7 @@ public class DialogCuentasLibroDiario extends javax.swing.JDialog {
         }
 
         rSTextFieldMaterial1.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldMaterial1.setColorMaterial(new java.awt.Color(51, 51, 51));
+        rSTextFieldMaterial1.setColorMaterial(new java.awt.Color(51, 153, 255));
         rSTextFieldMaterial1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rSTextFieldMaterial1.setPhColor(new java.awt.Color(153, 153, 153));
         rSTextFieldMaterial1.setPlaceholder("Buscar cuenta por (código, nombre)");
@@ -165,7 +173,7 @@ public class DialogCuentasLibroDiario extends javax.swing.JDialog {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane ScrollPanelReporteLibroDiario;
+    public javax.swing.JScrollPane ScrollPanelReporteLibroDiario;
     private javax.swing.JPanel jPanel1;
     private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial1;
     public RSMaterialComponent.RSTableMetro tablaCuentasLibroDiario;

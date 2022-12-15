@@ -19,17 +19,19 @@ public class PnlLibroDiario extends javax.swing.JPanel {
      */
     public PnlLibroDiario() {
         initComponents();
-        this.btnRegistrarPartida.setActionCommand("btnRegistrarPartida");
+        this.btnRegistrarTransaccion.setActionCommand("btnRegistrarPartida");
         this.btnReportePartidas.setActionCommand("btnReportePartidas");
         this.btnVolverLibroDiario.setActionCommand("btnVolverLibroDiario");
         this.btnBuscarCuentaPartida.setActionCommand("btnBuscarCuentaPartida");
+        this.btnAgregarCuentaPartida.setActionCommand("btnAgregarCuentaPartida");
     }
     
     public void setControlador(Controlador control){
-        this.btnRegistrarPartida.addActionListener(control);
+        this.btnRegistrarTransaccion.addActionListener(control);
         this.btnReportePartidas.addActionListener(control);
         this.btnVolverLibroDiario.addActionListener(control);
         this.btnBuscarCuentaPartida.addActionListener(control);
+        this.btnAgregarCuentaPartida.addActionListener(control);
     }
 
     /**
@@ -47,22 +49,22 @@ public class PnlLibroDiario extends javax.swing.JPanel {
         btnVolverLibroDiario = new newscomponents.RSButtonIcon_new();
         rSPanelMaterial1 = new RSMaterialComponent.RSPanelMaterial();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblBaul = new RSMaterialComponent.RSTableMetro();
-        btnRegistrarPartida = new newscomponents.RSButtonIcon_new();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        rSDateChooserModern1 = new newscomponents.RSDateChooserModern();
+        tablaCuentaTransaccion = new RSMaterialComponent.RSTableMetro();
+        btnRegistrarTransaccion = new newscomponents.RSButtonIcon_new();
+        labelDebe = new javax.swing.JLabel();
+        labelHaber = new javax.swing.JLabel();
+        inputFecha = new newscomponents.RSDateChooserModern();
         jLabel3 = new javax.swing.JLabel();
-        rSTextFieldOne1 = new RSMaterialComponent.RSTextFieldOne();
+        inputConcepto = new RSMaterialComponent.RSTextFieldOne();
         jLabel4 = new javax.swing.JLabel();
         btnBuscarCuentaPartida = new newscomponents.RSButtonIcon_new();
-        rSTextFieldOne2 = new RSMaterialComponent.RSTextFieldOne();
-        rSTextFieldOne3 = new RSMaterialComponent.RSTextFieldOne();
+        inputCodigoCuenta = new RSMaterialComponent.RSTextFieldOne();
+        inputNomCuenta = new RSMaterialComponent.RSTextFieldOne();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        rSTextFieldOne4 = new RSMaterialComponent.RSTextFieldOne();
+        inputSaldo = new RSMaterialComponent.RSTextFieldOne();
         jLabel8 = new javax.swing.JLabel();
-        rSComboBox1 = new RSMaterialComponent.RSComboBox();
+        selectTipoSaldo = new RSMaterialComponent.RSComboBox();
         jLabel9 = new javax.swing.JLabel();
         btnAgregarCuentaPartida = new newscomponents.RSButtonIcon_new();
         jLabel5 = new javax.swing.JLabel();
@@ -134,78 +136,81 @@ public class PnlLibroDiario extends javax.swing.JPanel {
         jScrollPane2.setBorder(null);
         jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
 
-        tblBaul.setForeground(new java.awt.Color(255, 255, 255));
-        tblBaul.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCuentaTransaccion.setForeground(new java.awt.Color(255, 255, 255));
+        tablaCuentaTransaccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Cuenta", "Debe", "Haber"
+                "Código", "Cuenta", "Debe", "Haber", "Eliminar"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblBaul.setBackgoundHead(new java.awt.Color(240, 240, 240));
-        tblBaul.setBackgoundHover(new java.awt.Color(204, 204, 204));
-        tblBaul.setColorBorderHead(new java.awt.Color(255, 255, 255));
-        tblBaul.setColorBorderRows(new java.awt.Color(255, 255, 255));
-        tblBaul.setColorPrimaryText(new java.awt.Color(51, 51, 51));
-        tblBaul.setColorSecondary(new java.awt.Color(240, 240, 240));
-        tblBaul.setColorSecundaryText(new java.awt.Color(51, 51, 51));
-        tblBaul.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        tblBaul.setFontHead(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tblBaul.setForegroundHead(new java.awt.Color(51, 51, 51));
-        tblBaul.setModelSelection(null);
-        tblBaul.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setViewportView(tblBaul);
-        if (tblBaul.getColumnModel().getColumnCount() > 0) {
-            tblBaul.getColumnModel().getColumn(0).setResizable(false);
-            tblBaul.getColumnModel().getColumn(1).setResizable(false);
-            tblBaul.getColumnModel().getColumn(1).setPreferredWidth(300);
-            tblBaul.getColumnModel().getColumn(2).setResizable(false);
-            tblBaul.getColumnModel().getColumn(3).setResizable(false);
+        tablaCuentaTransaccion.setBackgoundHead(new java.awt.Color(240, 240, 240));
+        tablaCuentaTransaccion.setBackgoundHover(new java.awt.Color(204, 204, 204));
+        tablaCuentaTransaccion.setColorBorderHead(new java.awt.Color(255, 255, 255));
+        tablaCuentaTransaccion.setColorBorderRows(new java.awt.Color(255, 255, 255));
+        tablaCuentaTransaccion.setColorPrimaryText(new java.awt.Color(51, 51, 51));
+        tablaCuentaTransaccion.setColorSecondary(new java.awt.Color(240, 240, 240));
+        tablaCuentaTransaccion.setColorSecundaryText(new java.awt.Color(51, 51, 51));
+        tablaCuentaTransaccion.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        tablaCuentaTransaccion.setFontHead(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tablaCuentaTransaccion.setFontRowSelect(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        tablaCuentaTransaccion.setForegroundHead(new java.awt.Color(51, 51, 51));
+        tablaCuentaTransaccion.setGridColor(new java.awt.Color(255, 255, 255));
+        tablaCuentaTransaccion.setModelSelection(null);
+        tablaCuentaTransaccion.setSelectionBackground(new java.awt.Color(153, 204, 255));
+        jScrollPane2.setViewportView(tablaCuentaTransaccion);
+        if (tablaCuentaTransaccion.getColumnModel().getColumnCount() > 0) {
+            tablaCuentaTransaccion.getColumnModel().getColumn(0).setResizable(false);
+            tablaCuentaTransaccion.getColumnModel().getColumn(1).setResizable(false);
+            tablaCuentaTransaccion.getColumnModel().getColumn(1).setPreferredWidth(300);
+            tablaCuentaTransaccion.getColumnModel().getColumn(2).setResizable(false);
+            tablaCuentaTransaccion.getColumnModel().getColumn(3).setResizable(false);
+            tablaCuentaTransaccion.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        btnRegistrarPartida.setBackground(new java.awt.Color(27, 172, 27));
-        btnRegistrarPartida.setText("Registrar transacción");
-        btnRegistrarPartida.setBackgroundHover(new java.awt.Color(30, 191, 30));
-        btnRegistrarPartida.setFocusPainted(false);
-        btnRegistrarPartida.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
-        btnRegistrarPartida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnRegistrarPartida.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SAVE);
-        btnRegistrarPartida.setRound(5);
-        btnRegistrarPartida.setSizeIcon(22.0F);
-        btnRegistrarPartida.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarTransaccion.setBackground(new java.awt.Color(27, 172, 27));
+        btnRegistrarTransaccion.setText("Registrar transacción");
+        btnRegistrarTransaccion.setBackgroundHover(new java.awt.Color(30, 191, 30));
+        btnRegistrarTransaccion.setFocusPainted(false);
+        btnRegistrarTransaccion.setFont(new java.awt.Font("Roboto Bold", 1, 15)); // NOI18N
+        btnRegistrarTransaccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRegistrarTransaccion.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SAVE);
+        btnRegistrarTransaccion.setRound(5);
+        btnRegistrarTransaccion.setSizeIcon(22.0F);
+        btnRegistrarTransaccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarPartidaActionPerformed(evt);
+                btnRegistrarTransaccionActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel1.setText("0.00");
+        labelDebe.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        labelDebe.setText("0.00");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel2.setText("0.00");
+        labelHaber.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        labelHaber.setText("0.00");
 
-        rSDateChooserModern1.setBackground(new java.awt.Color(102, 102, 102));
-        rSDateChooserModern1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rSDateChooserModern1.setFormatDate("dd/MM/yyyy");
+        inputFecha.setBackground(new java.awt.Color(102, 102, 102));
+        inputFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        inputFecha.setFormatDate("dd/MM/yyyy");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Código");
 
-        rSTextFieldOne1.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldOne1.setBorderColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rSTextFieldOne1.setPhColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne1.setPlaceholder("Digite una descripción");
-        rSTextFieldOne1.setSelectionColor(new java.awt.Color(204, 204, 204));
+        inputConcepto.setForeground(new java.awt.Color(51, 51, 51));
+        inputConcepto.setBorderColor(new java.awt.Color(102, 102, 102));
+        inputConcepto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        inputConcepto.setPhColor(new java.awt.Color(102, 102, 102));
+        inputConcepto.setPlaceholder("Digite una descripción");
+        inputConcepto.setSelectionColor(new java.awt.Color(204, 204, 204));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Descripción");
@@ -229,21 +234,21 @@ public class PnlLibroDiario extends javax.swing.JPanel {
             }
         });
 
-        rSTextFieldOne2.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldOne2.setBorderColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne2.setEnabled(false);
-        rSTextFieldOne2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rSTextFieldOne2.setPhColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne2.setPlaceholder("-");
-        rSTextFieldOne2.setSelectionColor(new java.awt.Color(204, 204, 204));
+        inputCodigoCuenta.setForeground(new java.awt.Color(51, 51, 51));
+        inputCodigoCuenta.setBorderColor(new java.awt.Color(102, 102, 102));
+        inputCodigoCuenta.setEnabled(false);
+        inputCodigoCuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        inputCodigoCuenta.setPhColor(new java.awt.Color(102, 102, 102));
+        inputCodigoCuenta.setPlaceholder("-");
+        inputCodigoCuenta.setSelectionColor(new java.awt.Color(204, 204, 204));
 
-        rSTextFieldOne3.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldOne3.setBorderColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne3.setEnabled(false);
-        rSTextFieldOne3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rSTextFieldOne3.setPhColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne3.setPlaceholder("-");
-        rSTextFieldOne3.setSelectionColor(new java.awt.Color(204, 204, 204));
+        inputNomCuenta.setForeground(new java.awt.Color(51, 51, 51));
+        inputNomCuenta.setBorderColor(new java.awt.Color(102, 102, 102));
+        inputNomCuenta.setEnabled(false);
+        inputNomCuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        inputNomCuenta.setPhColor(new java.awt.Color(102, 102, 102));
+        inputNomCuenta.setPlaceholder("-");
+        inputNomCuenta.setSelectionColor(new java.awt.Color(204, 204, 204));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Fecha");
@@ -251,26 +256,26 @@ public class PnlLibroDiario extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Nombre de cuenta");
 
-        rSTextFieldOne4.setForeground(new java.awt.Color(51, 51, 51));
-        rSTextFieldOne4.setBorderColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rSTextFieldOne4.setPhColor(new java.awt.Color(102, 102, 102));
-        rSTextFieldOne4.setPlaceholder("0.00");
-        rSTextFieldOne4.setSelectionColor(new java.awt.Color(204, 204, 204));
+        inputSaldo.setForeground(new java.awt.Color(51, 51, 51));
+        inputSaldo.setBorderColor(new java.awt.Color(102, 102, 102));
+        inputSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        inputSaldo.setPhColor(new java.awt.Color(102, 102, 102));
+        inputSaldo.setPlaceholder("0.00");
+        inputSaldo.setSelectionColor(new java.awt.Color(204, 204, 204));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Saldo ($)");
 
-        rSComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        rSComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Deudor", "Acreedor" }));
-        rSComboBox1.setColorArrow(new java.awt.Color(51, 51, 51));
-        rSComboBox1.setColorBorde(new java.awt.Color(102, 102, 102));
-        rSComboBox1.setColorFondo(new java.awt.Color(255, 255, 255));
-        rSComboBox1.setColorListaItemsTXT(new java.awt.Color(51, 51, 51));
-        rSComboBox1.setColorSeleccion(new java.awt.Color(204, 204, 204));
-        rSComboBox1.setColorSeleccionTXT(new java.awt.Color(51, 51, 51));
-        rSComboBox1.setConBorde(true);
-        rSComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        selectTipoSaldo.setForeground(new java.awt.Color(51, 51, 51));
+        selectTipoSaldo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Deudor", "Acreedor" }));
+        selectTipoSaldo.setColorArrow(new java.awt.Color(51, 51, 51));
+        selectTipoSaldo.setColorBorde(new java.awt.Color(102, 102, 102));
+        selectTipoSaldo.setColorFondo(new java.awt.Color(255, 255, 255));
+        selectTipoSaldo.setColorListaItemsTXT(new java.awt.Color(51, 51, 51));
+        selectTipoSaldo.setColorSeleccion(new java.awt.Color(204, 204, 204));
+        selectTipoSaldo.setColorSeleccionTXT(new java.awt.Color(51, 51, 51));
+        selectTipoSaldo.setConBorde(true);
+        selectTipoSaldo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Tipo de saldo");
@@ -303,7 +308,7 @@ public class PnlLibroDiario extends javax.swing.JPanel {
                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
                         .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rSTextFieldOne4, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +316,7 @@ public class PnlLibroDiario extends javax.swing.JPanel {
                                 .addComponent(jLabel9)
                                 .addGap(332, 489, Short.MAX_VALUE))
                             .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
-                                .addComponent(rSComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selectTipoSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAgregarCuentaPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))
@@ -319,30 +324,31 @@ public class PnlLibroDiario extends javax.swing.JPanel {
                         .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
                             .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
-                                .addComponent(btnRegistrarPartida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnRegistrarTransaccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(labelDebe, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelHaber, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78))
                             .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
                                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rSDateChooserModern1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(rSTextFieldOne1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(inputConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
                                 .addComponent(btnBuscarCuentaPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rSTextFieldOne2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputCodigoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3))
                                 .addGap(18, 18, 18)
                                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rSTextFieldOne3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(inputNomCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(rSPanelMaterial1Layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addGap(0, 0, Short.MAX_VALUE)))))
@@ -356,8 +362,8 @@ public class PnlLibroDiario extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rSTextFieldOne1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(rSDateChooserModern1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(inputConcepto, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(inputFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -365,25 +371,25 @@ public class PnlLibroDiario extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarCuentaPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSTextFieldOne2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSTextFieldOne3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputCodigoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputNomCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rSTextFieldOne4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectTipoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarCuentaPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRegistrarPartida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistrarTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(rSPanelMaterial1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(labelDebe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelHaber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -451,9 +457,9 @@ public class PnlLibroDiario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarCuentaPartidaActionPerformed
 
-    private void btnRegistrarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPartidaActionPerformed
+    private void btnRegistrarTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarTransaccionActionPerformed
 
-    }//GEN-LAST:event_btnRegistrarPartidaActionPerformed
+    }//GEN-LAST:event_btnRegistrarTransaccionActionPerformed
 
     private void btnReportePartidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportePartidasActionPerformed
         // TODO add your handling code here:
@@ -464,11 +470,14 @@ public class PnlLibroDiario extends javax.swing.JPanel {
     public newscomponents.RSButtonIcon_new btnAgregarCuentaPartida;
     public newscomponents.RSButtonIcon_new btnBuscarCuentaPartida;
     private RSMaterialComponent.RSButtonIconOne btnClose;
-    public newscomponents.RSButtonIcon_new btnRegistrarPartida;
+    public newscomponents.RSButtonIcon_new btnRegistrarTransaccion;
     public newscomponents.RSButtonIcon_new btnReportePartidas;
     public newscomponents.RSButtonIcon_new btnVolverLibroDiario;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public RSMaterialComponent.RSTextFieldOne inputCodigoCuenta;
+    private RSMaterialComponent.RSTextFieldOne inputConcepto;
+    private newscomponents.RSDateChooserModern inputFecha;
+    public RSMaterialComponent.RSTextFieldOne inputNomCuenta;
+    public RSMaterialComponent.RSTextFieldOne inputSaldo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -477,15 +486,12 @@ public class PnlLibroDiario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private RSMaterialComponent.RSComboBox rSComboBox1;
-    private newscomponents.RSDateChooserModern rSDateChooserModern1;
+    public javax.swing.JLabel labelDebe;
+    public javax.swing.JLabel labelHaber;
     private RSMaterialComponent.RSLabelTextIcon rSLabelTextIcon1;
     private RSMaterialComponent.RSPanelBorder rSPanelBorder1;
     private RSMaterialComponent.RSPanelMaterial rSPanelMaterial1;
-    private RSMaterialComponent.RSTextFieldOne rSTextFieldOne1;
-    private RSMaterialComponent.RSTextFieldOne rSTextFieldOne2;
-    private RSMaterialComponent.RSTextFieldOne rSTextFieldOne3;
-    private RSMaterialComponent.RSTextFieldOne rSTextFieldOne4;
-    public static RSMaterialComponent.RSTableMetro tblBaul;
+    public RSMaterialComponent.RSComboBox selectTipoSaldo;
+    public RSMaterialComponent.RSTableMetro tablaCuentaTransaccion;
     // End of variables declaration//GEN-END:variables
 }

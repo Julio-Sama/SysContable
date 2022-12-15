@@ -4,7 +4,10 @@
  */
 package modelo.entidades;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import modelo.dao.CuentaTransaccionDao;
 
 /**
  *
@@ -18,7 +21,7 @@ public class Cuenta {
     private int nivel_cuenta;
     private Empresa empresa;
     private TipoCuenta tipo_cuenta;
-    private ArrayList<CuentaTransaccion> cuentaTransacciones;
+    private ArrayList<CuentaTransaccion> listaCuentaTransacciones;
     
     public Cuenta() {
     }
@@ -27,7 +30,12 @@ public class Cuenta {
         this.cod_cuenta = cod_cuenta;
     }
 
-    public Cuenta(String cod_cuenta, String nom_cuenta, String tipo_saldo, String estado_financiero, int nivel_cuenta, Empresa empresa, TipoCuenta tipo_cuenta, ArrayList<CuentaTransaccion> cuentaTransacciones) {
+    public Cuenta(String cod_cuenta, String nom_cuenta) {
+        this.cod_cuenta = cod_cuenta;
+        this.nom_cuenta = nom_cuenta;
+    }
+
+    public Cuenta(String cod_cuenta, String nom_cuenta, String tipo_saldo, String estado_financiero, int nivel_cuenta, Empresa empresa, TipoCuenta tipo_cuenta) {
         this.cod_cuenta = cod_cuenta;
         this.nom_cuenta = nom_cuenta;
         this.tipo_saldo = tipo_saldo;
@@ -35,7 +43,6 @@ public class Cuenta {
         this.nivel_cuenta = nivel_cuenta;
         this.empresa = empresa;
         this.tipo_cuenta = tipo_cuenta;
-        this.cuentaTransacciones = cuentaTransacciones;
     }
 
     public String getCod_cuenta() {
@@ -94,11 +101,19 @@ public class Cuenta {
         this.tipo_cuenta = tipo_cuenta;
     }
 
-    public ArrayList<CuentaTransaccion> getCuentaTransacciones() {
-        return cuentaTransacciones;
+    public ArrayList<CuentaTransaccion> getListaCuentaTransacciones() {
+        CuentaTransaccionDao daoCuentaTransaccion = new CuentaTransaccionDao();
+        try {
+            this.listaCuentaTransacciones = daoCuentaTransaccion.selectAllTo("cod_cuenta", this.cod_cuenta);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        return listaCuentaTransacciones;
     }
 
-    public void setCuentaTransacciones(ArrayList<CuentaTransaccion> cuentaTransacciones) {
-        this.cuentaTransacciones = cuentaTransacciones;
+    public void setListaCuentaTransacciones(ArrayList<CuentaTransaccion> listaCuentaTransacciones) {
+        this.listaCuentaTransacciones = listaCuentaTransacciones;
     }
+
+    
 }
